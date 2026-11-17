@@ -1,0 +1,82 @@
+{
+  "data_origin": "Synthetic seed-42 single-machine demo",
+  "rows": {
+    "train": 3588,
+    "calibration": 1788,
+    "test": 1788,
+    "warmup_and_purged": 36
+  },
+  "periods": {
+    "train": {
+      "first": "2025-01-01 01:00:00+00:00",
+      "last": "2025-01-13 11:55:00+00:00"
+    },
+    "calibration": {
+      "first": "2025-01-13 13:00:00+00:00",
+      "last": "2025-01-19 17:55:00+00:00"
+    },
+    "test": {
+      "first": "2025-01-19 19:00:00+00:00",
+      "last": "2025-01-25 23:55:00+00:00"
+    }
+  },
+  "lookback_readings": 12,
+  "cadence_minutes": 5,
+  "calibration_false_positive_budget": 0.01,
+  "threshold": 0.56232961557018,
+  "observed_calibration_false_positive_rate": 0.009422850412249705,
+  "isolation_forest": {
+    "events": 5,
+    "detected_events": 5,
+    "missed_events": 0,
+    "event_recall": 1.0,
+    "detected_event_delays_minutes": [
+      40,
+      10,
+      20,
+      105,
+      10
+    ],
+    "median_detected_event_delay_minutes": 20.0,
+    "false_alarm_readings": 16,
+    "normal_readings": 1668,
+    "false_positive_rate": 0.009592326139088728,
+    "false_alarm_episodes": 16,
+    "false_alarm_episodes_per_normal_day": 2.7625899280575537,
+    "average_precision": 0.477616736965428,
+    "roc_auc": 0.9331884492406074,
+    "point_precision": 0.6,
+    "point_recall": 0.2
+  },
+  "robust_baseline": {
+    "events": 5,
+    "detected_events": 4,
+    "missed_events": 1,
+    "event_recall": 0.8,
+    "detected_event_delays_minutes": [
+      10,
+      0,
+      75,
+      0
+    ],
+    "median_detected_event_delay_minutes": 5.0,
+    "false_alarm_readings": 15,
+    "normal_readings": 1668,
+    "false_positive_rate": 0.008992805755395683,
+    "false_alarm_episodes": 15,
+    "false_alarm_episodes_per_normal_day": 2.5899280575539567,
+    "average_precision": 0.7999930936369087,
+    "roc_auc": 0.9523331334932055,
+    "point_precision": 0.845360824742268,
+    "point_recall": 0.6833333333333333
+  },
+  "robust_baseline_threshold": 2.0211006279574044,
+  "score_meaning": "Higher Isolation Forest score means more unusual, not failure probability.",
+  "limitations": [
+    "Synthetic faults do not establish real-equipment performance.",
+    "Calibration uses labeled normal readings; future false-alarm budgets are not guaranteed.",
+    "Temporal splitting evaluates one machine over time, not unseen-machine generalization.",
+    "Detected-event delay excludes missed events; inspect missed-event count alongside delay.",
+    "Historical windows may remain elevated after faults, producing recovery-period alerts."
+  ]
+}
